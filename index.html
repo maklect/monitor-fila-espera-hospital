@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="1800">
+<title>Fila de Espera — Dr. Alexandre Zaio</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f2f4f6; margin: 0; padding: 0 0 28px; color: #1a1a1a;
+  }
+  .cabecalho {
+    background: linear-gradient(135deg, #0b3d4c 0%, #145a6e 55%, #1c7a91 100%);
+    color: #fff; padding: 20px 28px; display: flex; align-items: center;
+    gap: 16px; margin-bottom: 22px; flex-wrap: wrap;
+  }
+  .icone-hospital {
+    width: 50px; height: 50px; border-radius: 14px;
+    background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .icone-hospital svg { width: 26px; height: 26px; animation: batimento 1.8s ease-in-out infinite; }
+  @keyframes batimento {
+    0%, 100% { transform: scale(1);    opacity: 0.9; }
+    15%      { transform: scale(1.18); opacity: 1;   }
+    30%      { transform: scale(1);    opacity: 0.9; }
+    45%      { transform: scale(1.1);  opacity: 1;   }
+    60%      { transform: scale(1);    opacity: 0.9; }
+  }
+  .titulo-hospital { flex: 1; }
+  .titulo-hospital .rotulo {
+    font-size: 0.7em; letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: 0.8; display: block; margin-bottom: 2px;
+  }
+  .titulo-hospital .nome { font-size: 1.2em; font-weight: 700; }
+  .btn-whatsapp {
+    background: #25D366; color: #fff; border: none; border-radius: 24px;
+    padding: 10px 18px; font-size: 0.88em; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+  }
+  .btn-whatsapp:hover { background: #1ebe57; }
+  .conteudo { padding: 0 24px; width: 100%; margin: 0 auto; }
+  h1 { font-size: 1.2em; margin: 0 0 2px; }
+  .atualizado { color: #666; font-size: 0.82em; margin-bottom: 16px; }
+  .faixa-ficha {
+    background: #fff; border-left: 6px solid #999; border-radius: 10px;
+    padding: 14px 22px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+  }
+  .faixa-titulo { font-weight: 700; font-size: 1.05em; color: #0f4c4c; }
+  .faixa-stat { font-size: 0.92em; color: #333; }
+  .faixa-valor { font-size: 1.35em; color: #16323a; }
+  .faixa-valor.critico { color: #c0281c; }
+  .faixa-limite { color: #888; font-size: 0.82em; }
+  .faixa-ficha.critico {
+    background: #fff4f3; border-left-color: #c0281c;
+    animation: pulso-critico 1.6s ease-in-out infinite;
+  }
+  .colunas { display: flex; gap: 20px; flex-wrap: wrap; align-items: stretch; }
+  .coluna { flex: 1 1 0; min-width: 340px; display: flex; }
+  .bloco-agenda {
+    background: #fff; border-radius: 14px; padding: 20px 24px; width: 100%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .bloco-agenda h2 {
+    margin: 0 0 14px; font-size: 1.2em; color: #0f4c4c;
+    border-bottom: 1px solid #eee; padding-bottom: 10px;
+  }
+  .linha-cor { border-left: 6px solid #ccc; padding: 14px 16px; margin: 12px 0;
+                background: #fafafa; border-radius: 8px; }
+  .linha-cor-cabecalho { margin-bottom: 8px; }
+  .nome-cor { font-weight: 700; letter-spacing: 0.02em; font-size: 1em; }
+  .valor-vazio { color: #888; font-size: 0.92em; }
+  .stats-grid { display: flex; gap: 12px; margin: 10px 0 6px; }
+  .stat-item { flex: 1; text-align: center; background: rgba(0,0,0,0.035);
+                border-radius: 10px; padding: 12px 6px; }
+  .stat-valor { font-size: 2.1em; font-weight: 800; line-height: 1.1; color: #16323a; }
+  .stat-valor.critico { color: #c0281c; }
+  .stat-rotulo { font-size: 0.7em; color: #666; text-transform: uppercase; letter-spacing: 0.03em; }
+  .desde-info { font-size: 0.8em; color: #888; text-align: right; }
+  .limite-info { font-size: 0.8em; color: #888; margin-top: 8px; }
+  .selo { display: inline-block; padding: 4px 12px; border-radius: 20px;
+           font-size: 0.82em; font-weight: 600; margin-top: 8px; }
+  .selo-ok { background: #e6f4ea; color: #1e7e34; }
+  .selo-atencao { background: #fff3cd; color: #8a6100; }
+  .selo-excedido { background: #fdeaea; color: #b3261e; font-weight: 700; }
+  .linha-cor.critico {
+    background: #fff4f3; border-left-color: #c0281c !important;
+    animation: pulso-critico 1.6s ease-in-out infinite;
+  }
+  @keyframes pulso-critico {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(192,40,28,0.28); }
+    50%      { box-shadow: 0 0 0 7px rgba(192,40,28,0); }
+  }
+</style>
+</head>
+<body>
+  <div class="cabecalho">
+    <div class="icone-hospital">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 12h4l2-7 4 14 2-7h8" stroke="white" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="titulo-hospital">
+      <span class="rotulo">Hospital Municipal</span>
+      <span class="nome">Dr. Alexandre Zaio</span>
+    </div>
+    <button class="btn-whatsapp" onclick="compartilharWhatsApp()">📤 Compartilhar no WhatsApp</button>
+  </div>
+  <div class="conteudo">
+    <h1>Fila de Espera — Pronto Socorro</h1>
+    <div class="atualizado">Atualizado em 22/07/2026 às 11:31 (a página se atualiza sozinha a cada 30 min)</div>
+    <div class="faixa-ficha"><span class="faixa-titulo">📋 Abertura de Ficha</span><span class="faixa-stat-texto">Nenhum paciente aguardando</span><span class="faixa-stat faixa-limite">meta: até 15 min</span></div>
+    <div class="colunas">
+      <div class="coluna"><section class="bloco-agenda"><h2>Classificação de Risco</h2><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PREFERENCIAL_PEDIATRIA</span></div><div class="valor-vazio">Nenhum paciente aguardando</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PEDIATRIA</span></div><div class="valor-vazio">Nenhum paciente aguardando</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PREFERENCIAL</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">2min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 11:27</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">ADULTO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">3min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 11:26</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">TOTAL_CLASSIFICACAO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">2</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">3min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 11:26</div></div></section></div><div class="coluna"><section class="bloco-agenda"><h2>PSM</h2><div class="linha-cor critico" style="border-left-color:#FF8C00"><div class="linha-cor-cabecalho"><span class="nome-cor">LARANJA</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">2</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor critico">32h48min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 02:43</div><div class="limite-info">Meta de atendimento: até 10 min</div><div class="selo selo-excedido">⛔ TEMPO EXCEDIDO — 19680% do prazo (1958 min além do limite)</div></div><div class="linha-cor" style="border-left-color:#E6C200"><div class="linha-cor-cabecalho"><span class="nome-cor">AMARELO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">3</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">50min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 10:41</div><div class="limite-info">Meta de atendimento: até 60 min</div><div class="selo selo-atencao">⚠ Próximo do limite — 83% do prazo</div></div><div class="linha-cor" style="border-left-color:#2E9E44"><div class="linha-cor-cabecalho"><span class="nome-cor">VERDE</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">17</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">1h09min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 10:22</div><div class="limite-info">Meta de atendimento: até 120 min</div><div class="selo selo-ok">Dentro do prazo — 57% do limite</div></div><div class="linha-cor" style="border-left-color:#3B5BDB"><div class="linha-cor-cabecalho"><span class="nome-cor">AZUL</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 240 min</div></div></section></div><div class="coluna"><section class="bloco-agenda"><h2>PPE</h2><div class="linha-cor" style="border-left-color:#FF8C00"><div class="linha-cor-cabecalho"><span class="nome-cor">LARANJA</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 10 min</div></div><div class="linha-cor" style="border-left-color:#E6C200"><div class="linha-cor-cabecalho"><span class="nome-cor">AMARELO</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 60 min</div></div><div class="linha-cor" style="border-left-color:#2E9E44"><div class="linha-cor-cabecalho"><span class="nome-cor">VERDE</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">2min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 11:29</div><div class="limite-info">Meta de atendimento: até 120 min</div><div class="selo selo-ok">Dentro do prazo — 2% do limite</div></div><div class="linha-cor" style="border-left-color:#3B5BDB"><div class="linha-cor-cabecalho"><span class="nome-cor">AZUL</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 240 min</div></div></section></div>
+    </div>
+  </div>
+  <script id="dados-painel" type="application/json">{"atualizado": "22/07/2026 às 11:31", "grupos": [{"agenda": "Classificação de Risco", "linhas": [{"rotulo": "PREFERENCIAL", "quantidade": 1, "espera": "2min", "marcador": ""}, {"rotulo": "ADULTO", "quantidade": 1, "espera": "3min", "marcador": ""}, {"rotulo": "TOTAL_CLASSIFICACAO", "quantidade": 2, "espera": "3min", "marcador": ""}]}, {"agenda": "PSM", "linhas": [{"rotulo": "LARANJA", "quantidade": 2, "espera": "32h48min", "marcador": "🔴"}, {"rotulo": "AMARELO", "quantidade": 3, "espera": "50min", "marcador": "🟡"}, {"rotulo": "VERDE", "quantidade": 17, "espera": "1h09min", "marcador": ""}]}, {"agenda": "PPE", "linhas": [{"rotulo": "VERDE", "quantidade": 1, "espera": "2min", "marcador": ""}]}]}</script>
+  <script>
+    function compartilharWhatsApp() {
+      const dados = JSON.parse(document.getElementById('dados-painel').textContent);
+      let texto = "🏥 Fila de Espera — Pronto Socorro\n";
+      texto += "📅 " + dados.atualizado + "\n\n";
+      if (dados.grupos.length === 0) {
+        texto += "Nenhum paciente aguardando em nenhuma fila no momento. ✅\n";
+      }
+      for (const grupo of dados.grupos) {
+        texto += "*" + grupo.agenda + "*\n";
+        for (const l of grupo.linhas) {
+          const marcador = l.marcador ? (l.marcador + " ") : "• ";
+          texto += marcador + l.rotulo + ": " + l.quantidade + " (máx " + l.espera + ")\n";
+        }
+        texto += "\n";
+      }
+      const url = "https://wa.me/?text=" + encodeURIComponent(texto);
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
