@@ -12,28 +12,28 @@
   }
   .cabecalho {
     background: linear-gradient(135deg, #0b3d4c 0%, #145a6e 55%, #1c7a91 100%);
-    color: #fff; padding: 20px 28px; display: grid;
+    color: #fff; padding: 10px 24px; display: grid;
     grid-template-columns: 1fr auto 1fr; align-items: center;
-    gap: 16px; margin-bottom: 22px;
+    gap: 14px; margin-bottom: 10px;
   }
-  .cabecalho-esquerda { display: flex; align-items: center; gap: 16px; justify-self: start; }
+  .cabecalho-esquerda { display: flex; align-items: center; gap: 12px; justify-self: start; }
   .cabecalho-centro {
-    justify-self: center; text-align: center; font-size: 1.3em;
+    justify-self: center; text-align: center; font-size: 1.08em;
     font-weight: 800; letter-spacing: 0.02em; white-space: nowrap;
   }
-  .cabecalho-direita { justify-self: end; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-  .atualizado-cabecalho { font-size: 0.8em; opacity: 0.88; text-align: right; }
+  .cabecalho-direita { justify-self: end; display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+  .atualizado-cabecalho { font-size: 0.74em; opacity: 0.88; text-align: right; }
   @media (max-width: 720px) {
     .cabecalho { grid-template-columns: 1fr; text-align: center; }
     .cabecalho-esquerda { justify-self: center; }
     .cabecalho-direita { justify-self: center; align-items: center; }
   }
   .icone-hospital {
-    width: 50px; height: 50px; border-radius: 14px;
+    width: 34px; height: 34px; border-radius: 10px;
     background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.28);
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
-  .icone-hospital svg { width: 26px; height: 26px; animation: batimento 1.8s ease-in-out infinite; }
+  .icone-hospital svg { width: 18px; height: 18px; animation: batimento 1.8s ease-in-out infinite; }
   @keyframes batimento {
     0%, 100% { transform: scale(1);    opacity: 0.9; }
     15%      { transform: scale(1.18); opacity: 1;   }
@@ -42,56 +42,56 @@
     60%      { transform: scale(1);    opacity: 0.9; }
   }
   .titulo-hospital .rotulo {
-    font-size: 0.7em; letter-spacing: 0.12em; text-transform: uppercase;
-    opacity: 0.8; display: block; margin-bottom: 2px;
+    font-size: 0.64em; letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: 0.8; display: block; margin-bottom: 1px;
   }
-  .titulo-hospital .nome { font-size: 1.2em; font-weight: 700; }
+  .titulo-hospital .nome { font-size: 0.98em; font-weight: 700; }
   .btn-whatsapp {
-    background: #25D366; color: #fff; border: none; border-radius: 24px;
-    padding: 10px 18px; font-size: 0.88em; font-weight: 700; cursor: pointer;
-    display: flex; align-items: center; gap: 8px; white-space: nowrap;
+    background: #25D366; color: #fff; border: none; border-radius: 18px;
+    padding: 6px 13px; font-size: 0.8em; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
   }
   .btn-whatsapp:hover { background: #1ebe57; }
   .conteudo { padding: 0 24px; width: 100%; margin: 0 auto; }
   .faixa-ficha {
-    background: #fff; border-left: 6px solid #999; border-radius: 10px;
-    padding: 14px 22px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+    background: #fff; border-left: 6px solid #999; border-radius: 8px;
+    padding: 7px 18px; margin-bottom: 9px; box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
   }
-  .faixa-titulo { font-weight: 700; font-size: 1.05em; color: #0f4c4c; }
-  .faixa-stat { font-size: 0.92em; color: #333; }
-  .faixa-valor { font-size: 1.35em; color: #16323a; }
+  .faixa-titulo { font-weight: 700; font-size: 0.94em; color: #0f4c4c; }
+  .faixa-stat { font-size: 0.83em; color: #333; }
+  .faixa-valor { font-size: 1.1em; color: #16323a; }
   .faixa-valor.critico { color: #c0281c; }
-  .faixa-limite { color: #888; font-size: 0.82em; }
+  .faixa-limite { color: #888; font-size: 0.76em; }
   .faixa-ficha.critico {
     background: #fff4f3; border-left-color: #c0281c;
     animation: pulso-critico 1.6s ease-in-out infinite;
   }
-  .colunas { display: flex; gap: 20px; flex-wrap: wrap; align-items: stretch; }
+  .colunas { display: flex; gap: 14px; flex-wrap: wrap; align-items: stretch; }
   .coluna { flex: 1 1 0; min-width: 340px; display: flex; }
   .bloco-agenda {
-    background: #fff; border-radius: 14px; padding: 20px 24px; width: 100%;
+    background: #fff; border-radius: 11px; padding: 11px 16px; width: 100%;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   }
   .bloco-agenda h2 {
-    margin: 0 0 14px; font-size: 1.2em; color: #0f4c4c;
-    border-bottom: 1px solid #eee; padding-bottom: 10px;
+    margin: 0 0 7px; font-size: 1em; color: #0f4c4c;
+    border-bottom: 1px solid #eee; padding-bottom: 5px;
   }
-  .linha-cor { border-left: 6px solid #ccc; padding: 14px 16px; margin: 12px 0;
-                background: #fafafa; border-radius: 8px; }
-  .linha-cor-cabecalho { margin-bottom: 8px; }
-  .nome-cor { font-weight: 700; letter-spacing: 0.02em; font-size: 1em; }
-  .valor-vazio { color: #888; font-size: 0.92em; }
-  .stats-grid { display: flex; gap: 12px; margin: 10px 0 6px; }
+  .linha-cor { border-left: 6px solid #ccc; padding: 7px 12px; margin: 5px 0;
+                background: #fafafa; border-radius: 6px; }
+  .linha-cor-cabecalho { margin-bottom: 4px; }
+  .nome-cor { font-weight: 700; letter-spacing: 0.02em; font-size: 0.9em; }
+  .valor-vazio { color: #888; font-size: 0.86em; }
+  .stats-grid { display: flex; gap: 8px; margin: 5px 0 3px; }
   .stat-item { flex: 1; text-align: center; background: rgba(0,0,0,0.035);
-                border-radius: 10px; padding: 12px 6px; }
-  .stat-valor { font-size: 2.1em; font-weight: 800; line-height: 1.1; color: #16323a; }
+                border-radius: 7px; padding: 5px 5px; }
+  .stat-valor { font-size: 1.5em; font-weight: 800; line-height: 1.1; color: #16323a; }
   .stat-valor.critico { color: #c0281c; }
-  .stat-rotulo { font-size: 0.7em; color: #666; text-transform: uppercase; letter-spacing: 0.03em; }
-  .desde-info { font-size: 0.8em; color: #888; text-align: right; }
-  .limite-info { font-size: 0.8em; color: #888; margin-top: 8px; }
-  .selo { display: inline-block; padding: 4px 12px; border-radius: 20px;
-           font-size: 0.82em; font-weight: 600; margin-top: 8px; }
+  .stat-rotulo { font-size: 0.64em; color: #666; text-transform: uppercase; letter-spacing: 0.03em; }
+  .desde-info { font-size: 0.74em; color: #888; text-align: right; }
+  .limite-info { font-size: 0.74em; color: #888; margin-top: 3px; }
+  .selo { display: inline-block; padding: 2px 9px; border-radius: 16px;
+           font-size: 0.76em; font-weight: 600; margin-top: 3px; }
   .selo-ok { background: #e6f4ea; color: #1e7e34; }
   .selo-atencao { background: #fff3cd; color: #8a6100; }
   .selo-excedido { background: #fdeaea; color: #b3261e; font-weight: 700; }
@@ -105,7 +105,7 @@
   }
 </style>
 </head>
-<body data-versao="2026-07-22T14:31:03.668704">
+<body data-versao="2026-07-22T14:41:13.539605">
   <div class="cabecalho">
     <div class="cabecalho-esquerda">
       <div class="icone-hospital">
@@ -121,17 +121,17 @@
     </div>
     <div class="cabecalho-centro">FILA DE ESPERA - SGHX - TO LIFE</div>
     <div class="cabecalho-direita">
-      <div class="atualizado-cabecalho">Atualizado em 22/07/2026 às 14:31<br>(a página se atualiza sozinha a cada 5 min)</div>
+      <div class="atualizado-cabecalho">Atualizado em 22/07/2026 às 14:41<br>(a página se atualiza sozinha a cada 5 min)</div>
       <button class="btn-whatsapp" onclick="compartilharWhatsApp()">📤 Compartilhar no WhatsApp</button>
     </div>
   </div>
   <div class="conteudo">
     <div class="faixa-ficha"><span class="faixa-titulo">📋 Abertura de Ficha</span><span class="faixa-stat-texto">Nenhum paciente aguardando</span><span class="faixa-stat faixa-limite">meta: até 15 min</span></div>
     <div class="colunas">
-      <div class="coluna"><section class="bloco-agenda"><h2>Classificação de Risco</h2><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PREFERENCIAL_PEDIATRIA</span></div><div class="valor-vazio">Nenhum paciente aguardando</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PEDIATRIA</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">2min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:57</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PREFERENCIAL</span></div><div class="valor-vazio">Nenhum paciente aguardando</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">ADULTO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">6min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:53</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">TOTAL_CLASSIFICACAO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">2</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">6min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:53</div></div></section></div><div class="coluna"><section class="bloco-agenda"><h2>PSM</h2><div class="linha-cor" style="border-left-color:#FF8C00"><div class="linha-cor-cabecalho"><span class="nome-cor">LARANJA</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 10 min</div></div><div class="linha-cor" style="border-left-color:#E6C200"><div class="linha-cor-cabecalho"><span class="nome-cor">AMARELO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">33min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:57</div><div class="limite-info">Meta de atendimento: até 60 min</div><div class="selo selo-ok">Dentro do prazo — 55% do limite</div></div><div class="linha-cor" style="border-left-color:#2E9E44"><div class="linha-cor-cabecalho"><span class="nome-cor">VERDE</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">13</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">1h13min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:17</div><div class="limite-info">Meta de atendimento: até 120 min</div><div class="selo selo-ok">Dentro do prazo — 61% do limite</div></div><div class="linha-cor" style="border-left-color:#3B5BDB"><div class="linha-cor-cabecalho"><span class="nome-cor">AZUL</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">30min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 14:00</div><div class="limite-info">Meta de atendimento: até 240 min</div><div class="selo selo-ok">Dentro do prazo — 12% do limite</div></div></section></div>
+      <div class="coluna"><section class="bloco-agenda"><h2>Classificação de Risco</h2><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PREFERENCIAL PEDIATRIA (P-PED)</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 60 min</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PEDIATRIA (PED)</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 60 min</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">PREFERENCIAL (PCA)</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 60 min</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">ADULTO (CA)</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 60 min</div></div><div class="linha-cor" style="border-left-color:#999"><div class="linha-cor-cabecalho"><span class="nome-cor">TOTAL — CLASSIFICAÇÃO DE RISCO</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 60 min</div></div></section></div><div class="coluna"><section class="bloco-agenda"><h2>PSM</h2><div class="linha-cor" style="border-left-color:#FF8C00"><div class="linha-cor-cabecalho"><span class="nome-cor">LARANJA</span></div><div class="valor-vazio">Nenhum paciente aguardando</div><div class="limite-info">Meta de atendimento: até 10 min</div></div><div class="linha-cor" style="border-left-color:#E6C200"><div class="linha-cor-cabecalho"><span class="nome-cor">AMARELO</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">43min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:57</div><div class="limite-info">Meta de atendimento: até 60 min</div><div class="selo selo-ok">Dentro do prazo — 72% do limite</div></div><div class="linha-cor" style="border-left-color:#2E9E44"><div class="linha-cor-cabecalho"><span class="nome-cor">VERDE</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">13</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">1h13min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 13:27</div><div class="limite-info">Meta de atendimento: até 120 min</div><div class="selo selo-ok">Dentro do prazo — 61% do limite</div></div><div class="linha-cor" style="border-left-color:#3B5BDB"><div class="linha-cor-cabecalho"><span class="nome-cor">AZUL</span></div><div class="stats-grid"><div class="stat-item"><div class="stat-valor">1</div><div class="stat-rotulo">paciente(s)</div></div><div class="stat-item"><div class="stat-valor">40min</div><div class="stat-rotulo">espera (mais antigo)</div></div></div><div class="desde-info">Desde 14:00</div><div class="limite-info">Meta de atendimento: até 240 min</div><div class="selo selo-ok">Dentro do prazo — 17% do limite</div></div></section></div>
     </div>
   </div>
-  <script id="dados-painel" type="application/json">{"atualizado": "22/07/2026 às 14:31", "grupos": [{"agenda": "Classificação de Risco", "linhas": [{"rotulo": "PEDIATRIA", "quantidade": 1, "espera": "2min", "marcador": ""}, {"rotulo": "ADULTO", "quantidade": 1, "espera": "6min", "marcador": ""}, {"rotulo": "TOTAL_CLASSIFICACAO", "quantidade": 2, "espera": "6min", "marcador": ""}]}, {"agenda": "PSM", "linhas": [{"rotulo": "AMARELO", "quantidade": 1, "espera": "33min", "marcador": ""}, {"rotulo": "VERDE", "quantidade": 13, "espera": "1h13min", "marcador": ""}, {"rotulo": "AZUL", "quantidade": 1, "espera": "30min", "marcador": ""}]}]}</script>
+  <script id="dados-painel" type="application/json">{"atualizado": "22/07/2026 às 14:41", "grupos": [{"agenda": "PSM", "linhas": [{"rotulo": "AMARELO", "quantidade": 1, "espera": "43min", "marcador": ""}, {"rotulo": "VERDE", "quantidade": 13, "espera": "1h13min", "marcador": ""}, {"rotulo": "AZUL", "quantidade": 1, "espera": "40min", "marcador": ""}]}]}</script>
   <script>
     function compartilharWhatsApp() {
       const dados = JSON.parse(document.getElementById('dados-painel').textContent);
